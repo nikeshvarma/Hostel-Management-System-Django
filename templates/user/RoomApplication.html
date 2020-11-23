@@ -1,0 +1,34 @@
+{% extends 'base/base.html' %}
+
+{% block title %}
+    <title>Apply For Room</title>
+{% endblock title %}
+
+{% block homenav %}
+    <nav class="newclass navbar navbar-expand-md navbar-dark bg-dark">
+        <a class="navbar-brand" href="{% url 'userhome' %}"> HOSTEL MANAGEMENT SYSTEM </a>
+    </nav>
+{% endblock homenav %}
+
+{% block homepage-content %}
+{% endblock homepage-content %}
+
+{% block user-content %}
+
+    {% if messages %}
+        <div class="newclass aleart alert-danger" align="center">
+            {% for message in messages %}
+                <h5>{{ message }}</h5>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    <div class="container newclass">
+        <p>Fill the following form to apply for room.</p>
+        <form action="{% url 'room_apply' %}" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button class="btn btn-primary">Apply</button>
+        </form>
+    </div>
+{% endblock user-content %}

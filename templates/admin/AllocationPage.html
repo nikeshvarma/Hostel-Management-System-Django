@@ -1,0 +1,43 @@
+{% extends 'admin/AdminBase.html' %}
+
+{% block title %}
+    <title>Application</title>
+{% endblock title %}
+
+{% block content %}
+
+    <div id="content-wrapper" class="d-flex flex-column">
+
+        <!-- Main Content -->
+        <div id="content">
+
+            <div class="container-fluid">
+                {% if messages %}
+                    <div class="newclass alert-info" align="center">
+                        {% for message in messages %}
+                            <h5>{{ message }}</h5>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+
+                <div class="newclass container">
+                    <div class="newclass card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Student Application</h6>
+                        </div>
+                        <form method="post" action="{% url 'allocation_page' user %}">
+                            {% csrf_token %}
+                            <table cellpadding="10px" class="table">
+                                {{ form.as_table }}
+                            </table>
+                            <div align="center">
+                                <button class="btn btn-success w-25" type="submit">Request For Payment</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}

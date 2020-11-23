@@ -1,0 +1,33 @@
+{% extends 'base/base.html' %}
+
+{% block title %} <title>Update Profile</title> {% endblock title %}
+
+{% block homenav %}
+{% endblock homenav %}
+
+{% block user-content %}
+
+    <div class="newclass nav bg-dark text-white">
+        <h4>Update Profile Details</h4>
+    </div>
+
+    {% if form1 %}
+        <div class="newclass">
+            <div class="container">
+                <form action="{% url 'update_profile' %}" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <table cellpadding="10px" class="table table-active">
+                        {{ form1.as_table }}
+                        {{ form2.as_table }}
+                    </table>
+                    <div align="center">
+                        <button type="submit" class="btn btn-success w-50">Update</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    {% endif %}
+{% endblock user-content %}
+
+{% block homepage-content %}
+{% endblock homepage-content %}

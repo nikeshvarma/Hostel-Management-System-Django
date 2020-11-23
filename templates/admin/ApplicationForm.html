@@ -1,0 +1,86 @@
+{% extends 'admin/adminpage.html' %}
+{% load static %}
+
+{% block title %}
+    <title>Profile</title>
+{% endblock title %}
+
+{% block content %}
+
+    <div id="content-wrapper" class="d-flex flex-column">
+        <!-- Main Content -->
+        <div id="content">
+            <div class="container-fluid">
+                <div class="newclass container">
+                    <div class="newclass card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Student Form</h6>
+                        </div>
+                        <table cellpadding="15px" class="newclass table">
+                            <tbody>
+                            <tr>
+                                <th>Username</th>
+                                <td>{{ user.user.username }}</td>
+                            </tr>
+                            <tr>
+                                <th>Name</th>
+                                <td>{{ user.user.first_name }}{{ ' ' }}{{ user.user.last_name }}</td>
+                            </tr>
+                            <tr>
+                                <th>Date Of Birth</th>
+                                <td>{{ user.date_of_birth }}</td>
+                            </tr>
+                            <tr>
+                                <th>Apply For Room</th>
+                                <td>{% if user.apply %}{{ 'YES' }}{% else %}{{ 'NO' }}{% endif %}</td>
+                            </tr>
+                            <tr>
+                                <th>Fees Status</th>
+                                <td>{{ user.payment_status }}</td>
+                            </tr>
+                            <tr>
+                                <th>Room Fees</th>
+                                <td>{{ user.billing_amount }}</td>
+                            </tr>
+                            <tr>
+                                <th>Room Status</th>
+                                <td>{% if user.allotted %}{{ 'ALLOTTED' }}{% else %}{{ 'NO' }}{% endif %}</td>
+                            </tr>
+                            <tr>
+                                <th>Room No.</th>
+                                <td>{{ user.room.room_id }}</td>
+                            </tr>
+                            <tr>
+                                <th>Room Allocation Date</th>
+                                <td>{{ user.room_allocation_date }}</td>
+                            </tr>
+                            <tr>
+                                <th>Room Expiry Date</th>
+                                <td>{{ user.room_expiry_date }}</td>
+                            </tr>
+                            <tr>
+                                <th>Course</th>
+                                <td>{{ user.course }}</td>
+                            </tr>
+                            <tr>
+                                <th>Phone Number</th>
+                                <td>{{ user.contact_no }}</td>
+                            </tr>
+                            <tr>
+                                <th>Temporary Address</th>
+                                <td>{{ user.temporary_address }}</td>
+                            </tr>
+                            <tr>
+                                <th>Permanent Address</th>
+                                <td>{{ user.permanent_address }}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}

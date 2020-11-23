@@ -1,0 +1,48 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block title %}
+    <title>Create New Account</title>
+{% endblock title %}
+
+
+{% block homenav %}
+
+    <nav class="newclass navbar navbar-dark bg-dark">
+        <a class="navbar-brand" href="{% url 'homepage' %}"> HOSTEL MANAGEMENT SYSTEM </a>
+        <a class="align-items-sm-end nav-link nav-item active" href="{% url 'login_page' %}">Login</a>
+    </nav>
+    <br><br>
+{% endblock homenav %}
+
+{% block user-content %}
+
+    {% if messages %}
+        <br><br>
+        <div class="newclass container alert-warning" align="center">
+            {% for message in messages %}
+                <h6>{{ message }}</h6>
+            {% endfor %}
+        </div>
+        <br><br>
+    {% endif %}
+
+    <div class="container newclass bg-light text-dark">
+        <div class="container newclass alert-info">
+            <h4>Create New Account</h4>
+        </div>
+        <div class="newclass">
+            <form action="{% url 'signup_page' %}" method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <div align="center">
+                    <button type="submit" class="btn btn-success w-25">Create New Account</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+{% endblock user-content %}
+
+{% block homepage-content %}
+{% endblock homepage-content %}

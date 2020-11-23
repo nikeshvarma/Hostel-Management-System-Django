@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+<div class="container">
+
+    {{ response_dict }}
+    {% if response_dict.RESPCODE == '01' %}
+        <center>
+            <h2>Thank you for your donation</h2>
+            <p>
+                We are thrilled to have your support. Through your donation we will be able to accomplish our goal. You
+                truly make the difference for us, and we are
+                extremely grateful!
+            </p>
+        </center>
+
+        <h3>Order ID: {{ response_dict.ORDERID }}</h3>
+        <h3>Order Date: {{ response_dict.TXNDATE }}</h3>
+        <h3>Amount: {{ response_dict.TXNAMOUNT }}</h3>
+        <h3>Payment Mode: {{ response_dict.PAYMENTMODE }}</h3>
+
+    {% else %}
+        <center>
+            <p>
+                There seems to be a problem. We will try to fix this from our end.
+            </p>
+        </center>
+    {% endif %}
+</div>
+
+</body>
+</html>

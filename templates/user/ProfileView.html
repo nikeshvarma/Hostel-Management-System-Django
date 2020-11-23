@@ -1,0 +1,223 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block title %}
+    <title>Profile</title>
+{% endblock title %}
+
+{% block homenav %}
+
+    <nav class="newclass navbar navbar-expand-md navbar-dark bg-dark">
+        <a class="navbar-brand" href="{% url 'userhome' %}"> HOSTEL MANAGEMENT SYSTEM </a>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'userhome' %}">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'logout_page' %}">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+{% endblock homenav %}
+
+{% block user-content %}
+
+
+    {% if messages %}
+        <div class="alert alert-warning" role="alert" align="center">
+            {% for message in messages %}
+                <h6>{{ message }}</h6>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    <!------ Include the above in your HEAD tag ---------->
+
+    <div class="container main-secction">
+        <div class="row">
+            <div class="row user-left-part">
+                <div class="col-md-3 col-sm-3 col-xs-12 user-profil-part pull-left">
+                    <div class="row ">
+                        <div class="col-md-12 col-md-12-sm-12 col-xs-12 user-image text-center">
+                            <!-- user image -->
+                            <img src="
+
+
+
+
+
+
+                                    {% if profile.profile_pic %}{{ profile.profile_pic.url }}{% else %}{% static 'images/default.png' %}{% endif %}"
+                                 data-fall
+                                 class="rounded-circle">
+                            <!-- user image end -->
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-9 col-sm-9 col-xs-12 pull-right profile-right-section">
+                    <div class="row profile-right-section-row">
+                        <div class="col-md-12 profile-header">
+                            <div class="row">
+                                <div class="col-md-8 col-sm-6 col-xs-6 profile-header-section1 pull-left">
+                                    <h2>{{ user.first_name }}{{ " " }}{{ user.last_name }}</h2>
+                                    <br>
+                                </div>
+
+                                <div class="col-md-4 col-sm-6 col-xs-6 profile-header-section1 text-right pull-rigth">
+                                    <a href="{% url 'update_profile' %}" class="btn btn-primary btn-block">Update
+                                        Profile</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <ul class="nav nav-tabs" role="tablist">
+                                        <li class="nav-item">
+                                            <a class="nav-link active" href="#profile" role="tab" data-toggle="tab"><i
+                                                    class="fas fa-user-circle"></i> Profile</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="#buzz" role="tab" data-toggle="tab"><i
+                                                    class="fas fa-info-circle"></i> Other Information</a>
+                                        </li>
+                                    </ul>
+
+                                    <!-- Tab panes -->
+                                    <div class="tab-content">
+                                        <div role="tabpanel" class="tab-pane fade show active" id="profile">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <label><strong>Roll No.</strong></label>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <p>{{ profile.roll_no }}</p>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <label><strong>Course</strong> </label>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <p>{{ profile.course }}</p>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <label><strong>Email</strong></label>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <p>{{ user.email }}</p>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <label><strong>Room No.</strong></label>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <p>
+                                                        {% if profile.allotted %}
+                                                            {{ profile.room }}
+                                                        {% else %}
+                                                            {{ 'Pay your fees' }}
+                                                        {% endif %}
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <label><strong>Room Allocation Date</strong></label>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <p>
+                                                        {% if profile.allotted %}
+                                                            {{ profile.room_allocation_date }}
+                                                        {% else %}
+                                                            {{ '' }}
+                                                        {% endif %}
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div role="tabpanel" class="tab-pane fade" id="buzz">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <label><strong>Temporary Address</strong></label>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <p>{{ profile.temporary_address }}</p>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <label><strong>Permanent Address</strong></label>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <p>{{ profile.permanent_address }}</p>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <label><strong>Contact Number</strong></label>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <p>{{ profile.contact_no }}</p>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <label><strong>Parent Number</strong></label>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <p>{{ profile.parent_no }}</p>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <label><strong>Date of Birth</strong></label>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <p>{{ profile.date_of_birth }}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4 img-main-rightPart">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="row image-right-part">
+                                                <div class="col-md-6 pull-left image-right-detail">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12 image-right-detail-section2">
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock user-content %}
+
+{% block homepage-content %}
+{% endblock homepage-content %}

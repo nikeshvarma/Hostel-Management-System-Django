@@ -1,0 +1,48 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block title %}
+    <title>login page</title>
+{% endblock title %}
+
+{% block homenav %}
+    <nav class="newclass navbar navbar-dark bg-dark">
+        <a class="navbar-brand" href="{% url 'homepage' %}"> HOSTEL MANAGEMENT SYSTEM </a>
+    </nav>
+    <br><br>
+{% endblock homenav %}
+
+
+{% block user-content %}
+
+    {% if messages %}
+        <div class="newclass container alert-danger" align="center">
+            {% for message in messages %}
+                <h5>{{ message }}</h5>
+            {% endfor %}
+        </div>
+        <br><br>
+    {% endif %}
+
+    <div class="container">
+        <h2 class="newclass alert-info">Login Here</h2>
+        <div class="newclass bg-light">
+
+            <form action="{% url 'login_page' %}" method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button class="btn btn-success" type="submit">Login</button>
+            </form>
+            <br>
+            <a href="{% url 'reset_password' %}" class="password-reset-link">Forgot Password?</a>
+            <br>
+            <p class="golink">Don't have an account?
+                <a class="btn-link" href="{% url 'signup_page' %}">Register Here</a>
+            </p>
+        </div>
+    </div>
+
+{% endblock user-content %}
+
+{% block homepage-content %}
+{% endblock homepage-content %}

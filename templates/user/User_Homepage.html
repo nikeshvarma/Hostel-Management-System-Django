@@ -1,0 +1,55 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block title %}
+    <title>Home</title>
+{% endblock title %}
+
+{% block homenav %}
+
+    <nav class="newclass navbar navbar-expand-md navbar-dark bg-dark">
+        <a class="navbar-brand" href="{% url 'userhome' %}"> HOSTEL MANAGEMENT SYSTEM </a>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'userhome' %}">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'profile_page' %}">Profile</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'payment_page' %}">Pay Fees</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'room_apply' %}">Apply</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'logout_page' %}">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+{% endblock homenav %}
+
+{% block user-content %}
+
+    {% if messages %}
+        <div class="alert alert-info" role="alert" align="center">
+            {% for message in messages %}
+                <h6>{{ message }}</h6>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    <div class="container newclass">
+        <h5> Hello, {{ user.first_name }}</h5>
+    </div>
+
+{% endblock user-content %}

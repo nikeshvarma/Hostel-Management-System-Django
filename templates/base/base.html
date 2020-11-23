@@ -1,0 +1,162 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+            crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+            integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+            crossorigin="anonymous"></script>
+
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+            integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+            crossorigin="anonymous"></script>
+
+    <script src="https://kit.fontawesome.com/8bf8d26ef4.js" crossorigin="anonymous"></script>
+
+    <!-- Custom fonts for this template-->
+    <link href="{% static 'css/all.min.css' %}" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+          rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="{% static 'css/sb-admin-2.min.css' %}" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/mystyle.css' %}">
+
+    {% block title %}
+        <title>Page</title>
+    {% endblock title %}
+</head>
+
+<body>
+
+{% block homenav %}
+    <nav class="newclass navbar navbar-expand-md navbar-dark bg-dark">
+        <a class="navbar-brand" href="{% url 'homepage' %}">HOSTEL MANAGEMENT SYSTEM</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'homepage' %}">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'service_page' %}">Services</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="#contact">Contact Us</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'signup_page' %}">Sign Up</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'login_page' %}">Login</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+{% endblock homenav %}
+
+{% block user-content %}
+
+{% endblock user-content %}
+
+{% block homepage-content %}
+
+    <div class="container-fluid bg-secondary">
+        <div class="row">
+            {% for image in images %}
+                <div class="col">
+                    <a href="{{ image.image.url }}" target="_blank">
+                        <img src="{{ image.image.url }}" height="200px" width="300px" class="myimage rounded">
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="container active newclass">
+
+        <h5>Facilities</h5>
+        Our hostel rooms are comfortably-furnished and make for a good home away from home. Girls and boys have
+        separate blocks and each block has a fixed capacity. There is a range of accommodation options to choose
+        from, for students’ convenience.
+        <br><br>
+        In this kind of accommodation, students have access to TV room, aqua guard for hot, cold and normal drinking
+        water and other leisure/sports activities within the hostel premises. Also includes the following
+        facilities:
+        <br><br>
+        24x7 Wi-Fi connectivity provided in all hostels
+        CCTV cameras at entrances of all hostels and foyer inside the campus
+        24x7 electricity and water supply in all the hostels
+        Night cafeterias up to 1.00 AM
+        Solar panels installed in all hostels for hot water
+        Caretakers and housekeeping services are provided in all hostels during day and night
+        Bike farm inside the campus for the students to buy and service their bicycle
+        A scaled down version of Gyms in all hostels other than MARENA
+        Sports Infrastructure within campus
+        <br><br>
+        <ul>
+            <li>Basketball court</li>
+            <li>Cricket ground</li>
+            <li>Hockey ground</li>
+            <li>Indoor Badminton court</li>
+            <li>Swimming pool</li>
+            <li>Table tennis</li>
+            <li>Chess</li>
+            <li>Caroms</li>
+        </ul>
+    </div>
+
+    <!-- footer -->
+    <div class="container-fluid newclass" id="contact">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+                <td height="67" bgcolor="#bdb76b">
+                    <div class="newclass" align="center"><span class="Stile21">
+                                Shanwara Chock, Burhanpur, Madhya Pradesh 450331<br>
+                                PHONE. 8854776655, MOBILE. 8871772642<br>
+                                Contact Here:
+                                <a href="mailto:nikeshvarma50@gmail.com"
+                                   class="toplinks">nikeshvarma50@gmail.com</a></span>
+                        <br>
+                        Connect Us:
+                        <a href="https://www.facebook.com/nikesh.varma.520" class="page-link"
+                           target="_blank">Facebook</a>
+
+                        <a href="https://www.instagram.com/__nikesh08__/" class="page-link"
+                           target="_blank">Instagram</a>
+
+                        <a href="https://twitter.com/Nikesh55947741" class="page-link"
+                           target="_blank">Twitter</a><br>
+                    </div>
+                </td>
+                <td></td>
+            </tr>
+        </table>
+    </div>
+
+{% endblock homepage-content %}
+
+</body>
+</html>

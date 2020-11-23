@@ -1,0 +1,17 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block title %}
+    <title>Home | Hostel Management System</title>
+{% endblock title %}
+
+{% block user-content %}
+    <marquee class="alert-danger">
+        <h6>This Project Is Under Development.</h6>
+    </marquee>
+
+    <div class="newclass container">
+        <strong>Date: {{ datetime|date }}</strong>
+    </div>
+
+{% endblock user-content %}
